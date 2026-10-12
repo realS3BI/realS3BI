@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sebastian Schlosser · Softwareentwicklung</title>
+  <meta name="description" content="Sebastian Schlosser, Softwareentwickler aus Österreich. Projekte von einer Counter-Strike-2-Plattform bis zu einem VNC-Client in Rust.">
+  <link rel="canonical" href="https://schlossers.at/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schlossers.at/">
+  <meta property="og:title" content="Sebastian Schlosser · Softwareentwicklung">
+  <meta property="og:description" content="Werkzeuge für Teams, Vereine und für mich selbst.">
+  <meta property="og:image" content="https://schlossers.at/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_AT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sebastian Schlosser",
+    "url": "https://schlossers.at/",
+    "jobTitle": "Softwareentwickler",
+    "address": { "@type": "PostalAddress", "addressCountry": "AT" },
+    "sameAs": ["https://github.com/realS3BI"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#projekte">Zu den Projekten</a>
+
+  <header class="site-header wrap">
+    <a class="mono" href="./">schlossers.at</a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="mono">
+        <li><a href="#projekte">Projekte</a></li>
+        <li><a href="#ueber-mich">Über mich</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="name">
+      <p class="mono muted reveal">Softwareentwicklung · Österreich</p>
+      <h1 id="name" class="reveal reveal-2">Sebastian<br><em>Schlosser</em></h1>
+      <div class="hero-body reveal reveal-3">
+        <p class="lede">Ich baue Werkzeuge für Teams, Vereine und für mich selbst: vom Trainingsserver für Counter-Strike&nbsp;2 bis zum VNC-Client in Rust.</p>
+        <div class="actions">
+          <a class="button mono" href="#kontakt">Schreib mir <span aria-hidden="true">→</span></a>
+          <a class="link-quiet mono" href="https://github.com/realS3BI">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projekte" class="section wrap" aria-labelledby="projekte-titel">
+      <div class="section-head">
+        <h2 id="projekte-titel">Ausgewählte Projekte</h2>
+        <span class="mono muted">2026</span>
+      </div>
+
+      <ol class="projects">
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/playbook">
+            <div>
+              <h3>Playbook</h3>
+              <p>Plattform für Counter-Strike&nbsp;2: Lineup-Bibliothek, Granatentraining im Spiel, Teams und Strats, Demoanalyse und Serververwaltung. Dazu ein eigenes CounterStrikeSharp-Plugin, ein Ingame-HUD und eine Windows-App für Review-Aufnahmen.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>TypeScript · C#</dd><dd>MongoDB · Docker</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/vnc-beach">
+            <div>
+              <h3>VNC Beach</h3>
+              <p>VNC-Server und -Viewer für macOS und Windows, gratis und Open Source. Spricht Standard-VNC, überträgt nur geänderte Bildschirmkacheln und teilt mehrere Monitore als einen Desktop. Mit iPad-App.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>Rust · Swift</dd><dd>RFB 3.8</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/hackathon-steckbrief">
+            <div>
+              <h3>Music &amp; AI Hackathon</h3>
+              <p>Beitrag zur Challenge „Accessibility &amp; Music“ auf der Rudolfshütte: eine Musik-Wissensbasis mit einem Creator, der Instrumentalstücke direkt im Browser erzeugt. Große Bedienelemente, Tastaturbedienung und Vorlesen inklusive.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>Next.js · React</dd><dd>Web Audio</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/vaultship">
+            <div>
+              <h3>vaultship</h3>
+              <p>Kommandozeilenwerkzeug für Releases: Versionssprung, Changelog, Pull Request, Docker-Image und Deploy in einem Befehl. Synchronisiert außerdem verschlüsselte <code>.env</code>-Dateien zwischen Rechnern.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>TypeScript · npm</dd><dd>SQLite</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/dns-uploader">
+            <div>
+              <h3>dns-manager</h3>
+              <p>DNS-Zonen verwalten, ohne sich bei jedem Anbieter einzeln anzumelden. Anbindung an Hetzner, Login über GitHub oder Google, aufgeteilt in eigenständige Pakete.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>React · Convex</dd><dd>Turborepo</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/ai-tracker">
+            <div>
+              <h3>AI Cost Tracker</h3>
+              <p>Kosten und Limits von KI-Werkzeugen an einem Ort: Codex-Limits, OpenAI-Ausgaben, OpenRouter-Guthaben und Cursor-Nutzung, im Browser oder auf der Kommandozeile.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>TypeScript · Node</dd><dd>CLI</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="project">
+          <a class="project-link" href="https://github.com/realS3BI/regau-cashapp">
+            <div>
+              <h3>Regau Cash App</h3>
+              <p>Kassen-App für Vereinsteams, installierbar auf Tablet und Handy. Jedes Team pflegt eigene Produkte und Kategorien, Einkäufe laufen in Echtzeit in den Admin-Bereich.</p>
+            </div>
+            <dl class="project-meta mono">
+              <dt>Jahr</dt><dd class="year">2026</dd>
+              <dt>Technik</dt><dd>React · Convex</dd><dd>PWA</dd>
+            </dl>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section id="ueber-mich" class="section wrap" aria-labelledby="ueber-titel">
+      <div class="section-head">
+        <h2 id="ueber-titel">Über mich</h2>
+      </div>
+
+      <div class="about">
+        <div class="about-text">
+          <p>Ich schreibe Software meistens dann, wenn mir oder Leuten um mich herum ein Werkzeug fehlt.</p>
+          <p>So ist ein Trainingsserver für das CS2-Team entstanden, eine Kasse für den Verein und ein Überblick über meine eigenen KI-Kosten. Am liebsten arbeite ich mit TypeScript, React und Convex. Wenn es schnell und nah am System sein muss, mit Rust.</p>
+          <p>Auf GitHub seit 2020, als <a href="https://github.com/realS3BI">realS3BI</a>.</p>
+        </div>
+
+        <dl class="stack">
+          <div>
+            <dt class="mono">Sprachen</dt>
+            <dd>TypeScript, Rust, C#, Python</dd>
+          </div>
+          <div>
+            <dt class="mono">Oberflächen</dt>
+            <dd>React, Next.js, Vite, Tailwind CSS</dd>
+          </div>
+          <div>
+            <dt class="mono">Backend</dt>
+            <dd>Convex, Node.js, MongoDB, SQLite</dd>
+          </div>
+          <div>
+            <dt class="mono">Betrieb</dt>
+            <dd>Docker, Turborepo, Tailscale</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section wrap" aria-labelledby="kontakt-titel">
+      <div class="section-head">
+        <h2 id="kontakt-titel">Kontakt</h2>
+      </div>
+
+      <div class="contact">
+        <p class="contact-line">Eine Idee, ein Projekt oder eine Frage?</p>
+        <a class="contact-mail" href="mailto:sebastian@schlossers.at">sebastian@schlossers.at</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="site-footer mono">
+      <span>© 2026 Sebastian Schlosser</span>
+      <ul>
+        <li><a href="https://github.com/realS3BI">GitHub</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
