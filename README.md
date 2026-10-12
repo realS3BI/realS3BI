@@ -11,9 +11,9 @@ Softwareentwickler aus Österreich. Ich schreibe Software meistens dann, wenn mi
 
 ### Projekte
 
-- **[Playbook](https://github.com/realS3BI/playbook)**: Plattform für Counter-Strike 2: Lineups, Granatentraining im Spiel, Teams und Strats, Demoanalyse und Serververwaltung. Mit eigenem CounterStrikeSharp-Plugin, Ingame-HUD und Windows-App.
+- **[Playbook](https://github.com/realS3BI/playbook)**: Plattform für Counter-Strike 2 mit Lineups, Granatentraining im Spiel, Teams und Strats, Demoanalyse und Serververwaltung. Mit eigenem CounterStrikeSharp-Plugin, Ingame-HUD und Windows-App.
 - **[VNC Beach](https://github.com/realS3BI/vnc-beach)**: VNC-Server und -Viewer für macOS und Windows, gratis und Open Source. In Rust, kompatibel mit Standard-VNC.
-- **[Music & AI Hackathon](https://github.com/realS3BI/hackathon-steckbrief)**: Beitrag zur Challenge „Accessibility & Music“: Musik-Wissensbasis mit einem Creator, der Instrumentalstücke im Browser erzeugt.
+- **[Music & AI Hackathon](https://github.com/realS3BI/hackathon-steckbrief)**: Musik-Wissensbasis mit einem Creator, der Instrumentalstücke im Browser erzeugt. Beitrag zur Challenge „Accessibility & Music“.
 - **[vaultship](https://github.com/realS3BI/vaultship)**: CLI für Releases in einem Befehl und verschlüsselten `.env`-Sync zwischen Rechnern. Auf [npm](https://www.npmjs.com/package/vaultship).
 - **[dns-manager](https://github.com/realS3BI/dns-uploader)**: DNS-Zonen verwalten mit Hetzner-Anbindung und Login über GitHub oder Google.
 - **[AI Cost Tracker](https://github.com/realS3BI/ai-tracker)**: Kosten und Limits von Codex, OpenAI, OpenRouter und Cursor an einem Ort, im Browser oder auf der Kommandozeile.
