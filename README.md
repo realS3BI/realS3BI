@@ -17,8 +17,6 @@ Softwareentwickler aus Österreich. Ich schreibe Software meistens dann, wenn mi
 - **[Music & AI Hackathon](https://github.com/realS3BI/hackathon-steckbrief)**: Musik-Wissensbasis mit einem Creator, der Instrumentalstücke im Browser erzeugt. Beitrag zur Challenge „Accessibility & Music“.
 - **[vaultship](https://github.com/realS3BI/vaultship)**: CLI für Releases in einem Befehl und verschlüsselten `.env`-Sync zwischen Rechnern. Auf [npm](https://www.npmjs.com/package/vaultship).
 - **[dns-manager](https://github.com/realS3BI/dns-uploader)**: DNS-Zonen verwalten mit Hetzner-Anbindung und Login über GitHub oder Google.
-- **[AI Cost Tracker](https://github.com/realS3BI/ai-tracker)**: Kosten und Limits von Codex, OpenAI, OpenRouter und Cursor an einem Ort, im Browser oder auf der Kommandozeile.
-- **[Regau Cash App](https://github.com/realS3BI/regau-cashapp)**: Kassen-App für Vereinsteams als PWA, mit Echtzeit-Admin-Bereich.
 
 ### Werkzeuge
 
