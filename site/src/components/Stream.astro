@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import { stream } from '../data/projects';
+
+const columns = [
+  { dir: 'up', items: stream.filter((_, i) => i % 2 === 0) },
+  { dir: 'down', items: stream.filter((_, i) => i % 2 === 1) },
+];
+const tilts = ['-1.6deg', '1.2deg', '-0.8deg', '1.8deg'];
+---
+
+<div class="stream" aria-label="Screenshots aus den Projekten">
+  {
+    columns.map(({ dir, items }) => (
+      <div class={`stream-col ${dir}`}>
+        {[...items, ...items].map((shot, i) => {
+          const copy = i >= items.length;
+          return (
+            <a
+              class="shot"
+              href={shot.href}
+              style={`--tilt:${tilts[i % tilts.length]}`}
+              aria-hidden={copy ? 'true' : undefined}
+              tabindex={copy ? -1 : undefined}
+            >
+              <Image
+                src={shot.image}
+                alt={copy ? '' : shot.alt}
+                widths={[360, 540, 720]}
+                sizes="(min-width: 56rem) 18rem, 14rem"
+                loading="eager"
+                decoding="async"
+              />
+            </a>
+          );
+        })}
+      </div>
+    ))
+  }
+</div>

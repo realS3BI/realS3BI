@@ -1,0 +1,25 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const current = (href: string) => (href === path ? 'page' : undefined);
+---
+
+<header class="site-header wrap">
+  <a class="brand" href="/">
+    <img src="/avatar.svg" alt="" width="28" height="28" />
+    <span>schlossers.at</span>
+  </a>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="/projekte" aria-current={current('/projekte')}>projekte</a></li>
+      <li><a href="/#ueber-mich">über mich</a></li>
+      <li><a href="/#kontakt">kontakt</a></li>
+    </ul>
+    <ThemeToggle />
+  </nav>
+</header>

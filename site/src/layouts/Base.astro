@@ -1,0 +1,100 @@
+---
+import '@fontsource-variable/instrument-sans';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title = 'Sebastian Schlosser · Softwareentwicklung',
+  description = 'Sebastian Schlosser, Softwareentwickler in Wien. Werkzeuge für Teams, Vereine und für mich selbst: Clunema, Playbook, VNC Beach.',
+  path = '/',
+} = Astro.props;
+
+const canonical = new URL(path, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://schlossers.at/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_AT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/fraunces-latin-full-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        var stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch (e) {}
+        var media = window.matchMedia('(prefers-color-scheme: dark)');
+        root.dataset.theme = stored || (media.matches ? 'dark' : 'light');
+        if (!stored) {
+          media.addEventListener('change', function (e) {
+            root.dataset.theme = e.matches ? 'dark' : 'light';
+          });
+        }
+      })();
+    </script>
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sebastian Schlosser",
+        "url": "https://schlossers.at/",
+        "jobTitle": "Softwareentwickler",
+        "address": { "@type": "PostalAddress", "addressLocality": "Wien", "addressCountry": "AT" },
+        "sameAs": ["https://github.com/realS3BI"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt</a>
+    <Header path={path} />
+    <main id="inhalt" class="wrap">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
