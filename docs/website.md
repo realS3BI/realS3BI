@@ -31,7 +31,7 @@ Alle Texte der Oberfläche stehen in `site/src/i18n/ui.ts`, die Projekttexte in 
 | `site/src/styles/global.css` | Farben, Schriften, Abstände als CSS-Variablen, darunter alle Stile |
 | `site/src/assets/projekte/` | Screenshots, Astro rechnet sie beim Build in WebP um |
 | `site/public/marken/` | Logos der Projekte für die Links im Intro |
-| `site/public/avatar.jpg` | Das Foto im Header und am Ausweis |
+| `site/public/avatar.png` | Der gezeichnete Avatar im Header und am Ausweis, 256 Pixel. Das 1024-Pixel-Original liegt in `design/avatar-doodle.png` |
 | `design/card.html` | Vorlage für das Vorschaubild `site/public/og.png` und das Banner im GitHub-Profil |
 | `.github/workflows/pages.yml` | Baut `site/` bei jedem Push auf `main` und veröffentlicht `site/dist` über GitHub Pages |
 
