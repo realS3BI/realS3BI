@@ -3,30 +3,41 @@ import '@fontsource-variable/instrument-sans';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { other, routes, ui, type Lang, type RouteKey } from '../i18n/ui';
 
 interface Props {
+  lang: Lang;
+  route?: RouteKey;
   title?: string;
   description?: string;
-  path?: string;
 }
 
-const {
-  title = 'Sebastian Schlosser · Softwareentwicklung',
-  description = 'Sebastian Schlosser, Softwareentwickler in Wien. Werkzeuge für Teams, Vereine und für mich selbst: Clunema, Playbook, VNC Beach.',
-  path = '/',
-} = Astro.props;
-
+const { lang, route, title = ui[lang].title, description = ui[lang].description } = Astro.props;
+const s = ui[lang];
+const o = other(lang);
+const path = route ? routes[route][lang] : Astro.url.pathname;
+const alt = route ? routes[route][o] : null;
 const canonical = new URL(path, Astro.site).href;
+const url = (p: string) => new URL(p, Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {
+      route && (
+        <>
+          <link rel="alternate" hreflang="de" href={url(routes[route].de)} />
+          <link rel="alternate" hreflang="en" href={url(routes[route].en)} />
+          <link rel="alternate" hreflang="x-default" href={url(routes[route].de)} />
+        </>
+      )
+    }
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
@@ -34,27 +45,43 @@ const canonical = new URL(path, Astro.site).href;
     <meta property="og:image" content="https://schlossers.at/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="de_AT" />
+    <meta property="og:locale" content={s.locale} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/fraunces-latin-full-italic.woff2" as="font" type="font/woff2" crossorigin />
-    <script is:inline>
+    <script is:inline define:vars={{ lang, alt }}>
       (function () {
         var root = document.documentElement;
         root.classList.add('js');
-        var stored = null;
+
+        var theme = null;
         try {
-          stored = localStorage.getItem('theme');
+          theme = localStorage.getItem('theme');
         } catch (e) {}
         var media = window.matchMedia('(prefers-color-scheme: dark)');
-        root.dataset.theme = stored || (media.matches ? 'dark' : 'light');
-        if (!stored) {
+        root.dataset.theme = theme || (media.matches ? 'dark' : 'light');
+        if (!theme) {
           media.addEventListener('change', function (e) {
             root.dataset.theme = e.matches ? 'dark' : 'light';
           });
         }
+
+        if (!alt) return;
+        var pref = null;
+        try {
+          pref = localStorage.getItem('lang');
+        } catch (e) {}
+        if (pref !== 'de' && pref !== 'en') {
+          var list = navigator.languages || [navigator.language || 'en'];
+          pref = list.some(function (l) {
+            return /^de/i.test(l);
+          })
+            ? 'de'
+            : 'en';
+        }
+        if (pref !== lang) location.replace(alt + location.hash);
       })();
     </script>
     <script type="application/ld+json" is:inline>
@@ -64,18 +91,19 @@ const canonical = new URL(path, Astro.site).href;
         "name": "Sebastian Schlosser",
         "url": "https://schlossers.at/",
         "jobTitle": "Softwareentwickler",
+        "worksFor": { "@type": "Organization", "name": "Sensor Network Services", "url": "https://www.sens.at/" },
         "address": { "@type": "PostalAddress", "addressLocality": "Wien", "addressCountry": "AT" },
         "sameAs": ["https://github.com/realS3BI"]
       }
     </script>
   </head>
   <body>
-    <a class="skip" href="#inhalt">Zum Inhalt</a>
-    <Header path={path} />
-    <main id="inhalt" class="wrap">
+    <a class="skip" href="#content">{s.skip}</a>
+    <Header lang={lang} route={route} />
+    <main id="content" class="wrap">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     <script>
       const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

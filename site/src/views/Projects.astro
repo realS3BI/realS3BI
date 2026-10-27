@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang].projectsPage;
+---
+
+<Base lang={lang} route="projects" title={s.metaTitle} description={s.description}>
+  <div class="page-head">
+    <h1 class="page-title">{s.title}</h1>
+    <p>{s.intro}</p>
+  </div>
+  <ul class="cards">
+    {projects.map((p) => <ProjectCard project={p} lang={lang} sizes="(min-width: 40rem) 32rem, 92vw" showTech />)}
+  </ul>
+</Base>

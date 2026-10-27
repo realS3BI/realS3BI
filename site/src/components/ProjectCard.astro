@@ -1,17 +1,20 @@
 ---
 import { Image } from 'astro:assets';
 import type { Project } from '../data/projects';
+import type { Lang } from '../i18n/ui';
 import CoverDns from './CoverDns.astro';
 import CoverTerminal from './CoverTerminal.astro';
 
 interface Props {
   project: Project;
+  lang: Lang;
   sizes?: string;
   showTech?: boolean;
 }
 
 const {
   project: p,
+  lang,
   sizes = '(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw',
   showTech = false,
 } = Astro.props;
@@ -20,17 +23,17 @@ const {
 <li class="card">
   <a href={p.href}>
     <figure class="card-media">
-      {p.image && <Image src={p.image} alt={p.imageAlt ?? ''} widths={[480, 720, 960]} sizes={sizes} />}
+      {p.image && <Image src={p.image} alt={p.imageAlt?.[lang] ?? ''} widths={[480, 720, 960]} sizes={sizes} />}
       {p.cover === 'terminal' && <CoverTerminal />}
       {p.cover === 'dns' && <CoverDns />}
     </figure>
     <div class="card-body">
-      <p class="eyebrow">{p.tag}</p>
+      <p class="eyebrow">{p.tag[lang]}</p>
       <h3>
         {p.name}
         <span class="arrow" aria-hidden="true">↗</span>
       </h3>
-      <p class="blurb">{p.blurb}</p>
+      <p class="blurb">{p.blurb[lang]}</p>
       {showTech && <p class="tech">{p.tech.join(' · ')}</p>}
     </div>
   </a>

@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang].legalPage;
+---
+
+<Base lang={lang} route="legal" title={s.metaTitle} description={s.description}>
+  <div class="page-head">
+    <h1 class="page-title">{s.title}</h1>
+  </div>
+  <div class="prose">
+    <h2 class="eyebrow">{s.disclosure}</h2>
+    <p>Sebastian Schlosser<br />Grimmgasse 41/7<br />1150 Wien, Österreich</p>
+    <p>{lang === 'de' ? 'E-Mail' : 'Email'}: <a href="mailto:sebastian@schlossers.at">sebastian@schlossers.at</a></p>
+    <p>{s.site}</p>
+
+    <h2 class="eyebrow">{s.privacy}</h2>
+    <p>{s.privacy1}</p>
+    <p>{s.privacy2}</p>
+  </div>
+</Base>

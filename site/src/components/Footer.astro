@@ -1,14 +1,22 @@
 ---
+import { routes, ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
 const year = new Date().getFullYear();
 ---
 
 <footer class="wrap">
   <div class="site-footer">
-    <span>© {year} Sebastian Schlosser · Gebaut mit Astro, ohne Tracking.</span>
+    <span>© {year} Sebastian Schlosser · {s.footer.built}</span>
     <ul>
       <li><a href="https://github.com/realS3BI">GitHub</a></li>
-      <li><a href="mailto:sebastian@schlossers.at">E-Mail</a></li>
-      <li><a href="/impressum">Impressum</a></li>
+      <li><a href="mailto:sebastian@schlossers.at">{s.footer.email}</a></li>
+      <li><a href={routes.legal[lang]}>{s.footer.legal}</a></li>
     </ul>
   </div>
 </footer>

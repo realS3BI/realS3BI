@@ -1,25 +1,45 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import { other, routes, ui, type Lang, type RouteKey } from '../i18n/ui';
 
 interface Props {
-  path: string;
+  lang: Lang;
+  route?: RouteKey;
 }
 
-const { path } = Astro.props;
-const current = (href: string) => (href === path ? 'page' : undefined);
+const { lang, route } = Astro.props;
+const s = ui[lang];
+const o = other(lang);
+const home = routes.home[lang];
+const altHref = route ? routes[route][o] : routes.home[o];
 ---
 
 <header class="site-header wrap">
-  <a class="brand" href="/">
-    <img src="/avatar.svg" alt="" width="28" height="28" />
+  <a class="brand" href={home}>
+    <img src="/avatar.jpg" alt="" width="28" height="28" />
     <span>schlossers.at</span>
   </a>
-  <nav class="nav" aria-label="Hauptnavigation">
+  <nav class="nav" aria-label={s.navLabel}>
     <ul>
-      <li><a href="/projekte" aria-current={current('/projekte')}>projekte</a></li>
-      <li><a href="/#ueber-mich">über mich</a></li>
-      <li><a href="/#kontakt">kontakt</a></li>
+      <li>
+        <a href={routes.projects[lang]} aria-current={route === 'projects' ? 'page' : undefined}>{s.nav.projects}</a>
+      </li>
+      <li><a href={`${home}#about`}>{s.nav.about}</a></li>
+      <li><a href={`${home}#contact`}>{s.nav.contact}</a></li>
     </ul>
-    <ThemeToggle />
+    <a class="lang" href={altHref} hreflang={o} lang={o} data-set-lang={o} aria-label={s.switchLang}>
+      {o.toUpperCase()}
+    </a>
+    <ThemeToggle label={s.theme} />
   </nav>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-set-lang]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', link.dataset.setLang ?? 'de');
+      } catch {}
+    });
+  });
+</script>

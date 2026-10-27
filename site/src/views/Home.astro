@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import Ausweis from '../components/Ausweis.astro';
+import Mark from '../components/Mark.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Stream from '../components/Stream.astro';
+import { featured } from '../data/projects';
+import { routes, ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
+const links = {
+  sens: 'https://www.sens.at',
+  clunema: 'https://clunema.com',
+  playbook: 'https://github.com/realS3BI/playbook',
+  vnc: 'https://reals3bi.github.io/vnc-beach/',
+  github: 'https://github.com/realS3BI',
+};
+---
+
+<Base lang={lang} route="home">
+  <section class="hero" aria-labelledby="intro">
+    <div>
+      {
+        lang === 'de' ? (
+          <h1 id="intro" class="hero-prose">
+            <strong>Hallo, ich bin Sebastian.</strong>{' '}
+            Softwareentwickler in Wien, tagsüber bei <a href={links.sens}>Sensor Network Services</a>.{' '}
+            <strong>
+              Abends baue ich <Mark href={links.clunema} icon="/marken/clunema.png" label="Clunema" />,
+            </strong>{' '}
+            eine Vereinssoftware mit Kassa.{' '}
+            <strong>
+              Fast alles davor ist entstanden, <em>weil ein Werkzeug gefehlt hat:</em>
+            </strong>{' '}
+            <Mark href={links.playbook} icon="/marken/playbook.svg" label="Playbook" />, damit mein CS2-Team Granaten
+            üben kann, und{' '}
+            <Mark href={links.vnc} icon="/marken/vnc-beach.png" label="VNC Beach" />, weil ich einen VNC-Client wollte,
+            der nichts kostet.
+          </h1>
+        ) : (
+          <h1 id="intro" class="hero-prose">
+            <strong>Hi, I'm Sebastian.</strong>{' '}
+            Software developer in Vienna, by day at <a href={links.sens}>Sensor Network Services</a>.{' '}
+            <strong>
+              In the evenings I build <Mark href={links.clunema} icon="/marken/clunema.png" label="Clunema" />,
+            </strong>{' '}
+            club software with a cash register.{' '}
+            <strong>
+              Almost everything before that exists <em>because a tool was missing:</em>
+            </strong>{' '}
+            <Mark href={links.playbook} icon="/marken/playbook.svg" label="Playbook" />, so my CS2 team can practise
+            grenades, and{' '}
+            <Mark href={links.vnc} icon="/marken/vnc-beach.png" label="VNC Beach" />, because I wanted a VNC client that
+            costs nothing.
+          </h1>
+        )
+      }
+      <div class="hero-actions">
+        <a class="btn" href="#contact">{s.hero.contact} <span aria-hidden="true">→</span></a>
+        <a class="quiet" href={links.github}>{s.hero.github} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <Stream lang={lang} />
+  </section>
+
+  <section id="projects" class="section" aria-labelledby="projects-title" data-reveal>
+    <div class="section-head">
+      <h2 id="projects-title" class="section-title">{s.sections.projects}</h2>
+      <a class="quiet" href={routes.projects[lang]}>{s.sections.allProjects} <span aria-hidden="true">→</span></a>
+    </div>
+    <ul class="cards three">
+      {featured.map((p) => <ProjectCard project={p} lang={lang} />)}
+    </ul>
+  </section>
+
+  <section id="about" class="section" aria-labelledby="about-title" data-reveal>
+    <div class="section-head">
+      <h2 id="about-title" class="section-title">{s.sections.about}</h2>
+    </div>
+    <div class="about">
+      <Ausweis lang={lang} />
+      <div class="about-text">
+        <p>{s.about.p1}</p>
+        <p>{s.about.p2} <a href={links.github}>{s.about.github}</a>.</p>
+        <dl class="tools">
+          <div>
+            <dt>{s.tools.languages}</dt>
+            <dd>TypeScript, Rust, C#, Python</dd>
+          </div>
+          <div>
+            <dt>{s.tools.ui}</dt>
+            <dd>React, Next.js, Astro, Tailwind CSS</dd>
+          </div>
+          <div>
+            <dt>{s.tools.data}</dt>
+            <dd>Convex, MongoDB, Postgres, Docker, Tailscale</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact" aria-labelledby="contact-title" data-reveal>
+    <div class="section-head">
+      <h2 id="contact-title" class="section-title">{s.sections.contact}</h2>
+    </div>
+    <p>{s.contact.line}</p>
+    <a class="contact-mail" href="mailto:sebastian@schlossers.at">sebastian@schlossers.at</a>
+    <div class="contact-links">
+      <a class="quiet" href={links.github}>GitHub <span aria-hidden="true">↗</span></a>
+      <a class="quiet" href="https://www.linkedin.com/in/sebastian-schlosser">LinkedIn <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</Base>

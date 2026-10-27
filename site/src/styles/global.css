@@ -300,6 +300,18 @@ p {
   color: var(--ink);
 }
 
+.lang {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.lang:hover {
+  color: var(--ink);
+}
+
 .toggle {
   display: inline-grid;
   place-items: center;
@@ -790,22 +802,6 @@ p {
 .ausweis dd {
   margin: 0;
   font-weight: 550;
-}
-
-.stamp {
-  position: absolute;
-  right: 1rem;
-  bottom: -0.7rem;
-  padding: 0.25em 0.55em;
-  border: 2px solid var(--accent);
-  border-radius: var(--r-sm);
-  background: var(--bg-raised);
-  color: var(--accent);
-  font-size: var(--text-xs);
-  font-weight: 650;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  transform: rotate(-9deg);
 }
 
 /* Kontakt */

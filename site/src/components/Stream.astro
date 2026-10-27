@@ -1,7 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import { stream } from '../data/projects';
+import { ui, type Lang } from '../i18n/ui';
 
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
 const columns = [
   { dir: 'up', items: stream.filter((_, i) => i % 2 === 0) },
   { dir: 'down', items: stream.filter((_, i) => i % 2 === 1) },
@@ -9,7 +15,7 @@ const columns = [
 const tilts = ['-1.6deg', '1.2deg', '-0.8deg', '1.8deg'];
 ---
 
-<div class="stream" aria-label="Screenshots aus den Projekten">
+<div class="stream" aria-label={ui[lang].streamLabel}>
   {
     columns.map(({ dir, items }) => (
       <div class={`stream-col ${dir}`}>
@@ -25,7 +31,7 @@ const tilts = ['-1.6deg', '1.2deg', '-0.8deg', '1.8deg'];
             >
               <Image
                 src={shot.image}
-                alt={copy ? '' : shot.alt}
+                alt={copy ? '' : shot.alt[lang]}
                 widths={[360, 540, 720]}
                 sizes="(min-width: 56rem) 18rem, 14rem"
                 loading="eager"
